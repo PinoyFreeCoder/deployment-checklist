@@ -1,5 +1,8 @@
 # Deployment Checklist
 
+<img width="1766" height="877" alt="image" src="https://github.com/user-attachments/assets/48ab16a1-3137-41f6-8df1-8f759cf57898" />
+
+
 A reusable, language- and framework-agnostic checklist to run before **every** production deploy. Covers web apps and mobile apps, with a deep, audit-grade security section (threat model, OWASP Web + Mobile Top 10, secrets, compliance, incident response).
 
 Works for any stack. Copy it into your own repo and run it per release.
