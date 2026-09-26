@@ -1,3 +1,5 @@
+![Deployment Checklist — Web & Mobile, Security-Heavy, Human + AI-Agent](./banner.png)
+
 # Deployment Checklist
 
 A reusable, language- and framework-agnostic checklist to run before **every** production deploy. Covers web apps and mobile apps, with a deep, audit-grade security section (threat model, OWASP Web + Mobile Top 10, secrets, compliance, incident response).
