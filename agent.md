@@ -1,8 +1,8 @@
 # Pre-Deployment Checklist — AI Agent Version
 
-Machine-facing companion to [checklist.md](./checklist.md). The human file is the **checklist** (the source of truth for *what* to verify). This file tells an AI coding agent (Claude Code, Cursor, Copilot, etc.) *how* to run it before a deploy.
+Machine-facing companion to the checklists in [checklists/](./checklists/). The base checklist ([checklists/base.md](./checklists/base.md)) is the source of truth for *what* to verify; stack-specific files (e.g. `checklists/go.md`) add extra items. This file tells an AI coding agent (Claude Code, Cursor, Copilot, etc.) *how* to run them before a deploy.
 
-Point your agent at both files. The checklist provides the items; this file provides the rules.
+Point your agent at the base checklist plus any stack file that matches the project. The checklists provide the items; this file provides the rules.
 
 ---
 
@@ -11,12 +11,19 @@ Point your agent at both files. The checklist provides the items; this file prov
 Paste this into your agent, in the repo you are about to deploy:
 
 ```text
-Read docs/deployment-checklist/checklist.md and docs/deployment-checklist/agent.md.
+Fetch and read the BASE deployment checklist:
+https://raw.githubusercontent.com/PinoyFreeCoder/deployment-checklist/main/checklists/base.md
+
+Then, if a checklist exists for this project's main language/stack, ALSO fetch it
+(e.g. .../checklists/go.md, .../checklists/java.md) and treat its items as
+additional checks on top of the base. If none exists, use the base alone.
+(Or, if the checklists were copied into this repo, read those local copies instead.)
 
 Audit THIS repository against every checklist item that applies to it:
 - Web-only repo: skip the Mobile-Specific section.
 - Mobile-only repo: skip the Web-Specific section.
 - Full-stack / both: check everything.
+- Include every item from the matching stack checklist, if any.
 
 For EACH item:
 - Verify against the actual code, config, and dependencies. Do NOT assume.
@@ -80,6 +87,7 @@ This is the rule that makes the audit trustworthy.
 
 ## 4. Notes
 
-- Keep this file and [checklist.md](./checklist.md) in sync. When you add a checklist item, the agent picks it up automatically — no change needed here unless the output format changes.
-- Severity labels (`[BLOCKER]` / `[SHOULD]` / `[NICE]`) are defined in the human checklist's legend.
+- Keep this file and the checklists in [checklists/](./checklists/) in sync. When you add a checklist item (base or stack), the agent picks it up automatically — no change needed here unless the output format changes.
+- Severity labels (`[BLOCKER]` / `[SHOULD]` / `[NICE]`) are defined in the base checklist's legend and reused by every stack file.
+- Adding a stack checklist? See [CONTRIBUTING.md](./CONTRIBUTING.md).
 - The human **Sign-off** block still applies: a person records the final GO/NO-GO, even when an agent produced the audit.
